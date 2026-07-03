@@ -1,20 +1,9 @@
----
-title: ML Research Assistant RAG
-emoji: 📚
-colorFrom: blue
-colorTo: purple
-sdk: gradio
-sdk_version: 4.42.0
-app_file: app.py
-pinned: false
----
 # ML Research Assistant (RAG)
 
 Hệ thống RAG (Retrieval-Augmented Generation) cho Q&A trên tài liệu kỹ thuật ML/AI
 (papers arXiv + docs thư viện như PyTorch/Hugging Face), với trọng tâm là xử lý tốt
 **công thức toán, code snippet và bảng biểu** — những phần RAG generic thường xử lý kém.
 
-> 🚧 Đang xây dựng — checklist tiến độ ở dưới.
 
 ## Điểm nhấn kỹ thuật
 
@@ -63,24 +52,6 @@ ml-research-rag/
 └── README.md
 ```
 
-## Cài đặt
-
-```bash
-git clone <repo-url>
-cd ml-research-rag
-python -m venv venv
-venv\Scripts\activate        # Windows
-pip install -r requirements.txt
-cp .env.example .env
-
-# Cài Ollama (free, chạy local): https://ollama.com
-ollama pull qwen2.5:3b-instruct
-```
-
-> Toàn bộ stack mặc định **100% free**: Ollama (local, dev) + Groq free tier
-> (khi deploy demo public lên HF Spaces) + embedding/reranker chạy local.
-> Không cần thẻ tín dụng, không cần Anthropic/OpenAI API key.
-
 ## Sử dụng
 
 ```bash
@@ -107,28 +78,6 @@ python -m src.evaluation.evaluate
 |---|---|---|---|---|
 | Naive chunking + dense-only | TBD | TBD | TBD | TBD |
 | Content-aware chunking + hybrid + rerank | TBD | TBD | TBD | TBD |
-
-## Checklist tiến độ
-
-- [x] Setup khung project
-- [x] Ingestion: parser (PDF/Markdown, phân loại content-type)
-- [x] Ingestion: content-aware chunker (+ baseline naive chunker để so sánh)
-- [x] Embedding + Chroma vector store
-- [x] Hybrid retrieval (BM25 + dense + RRF)
-- [x] Re-ranking (cross-encoder)
-- [x] Generation (prompt + LLM client: Ollama/Groq)
-- [x] FastAPI backend
-- [x] Gradio demo
-- [x] Script CLI build_index.py (parse -> chunk -> embed, chạy 1 lệnh)
-- [x] Evaluation harness (RAGAS) + ablation study (dense-only vs hybrid+rerank)
-- [ ] Tạo eval set thật (30-50 câu hỏi) — xem `eval_results/eval_questions.example.jsonl` để biết format
-- [ ] Chạy thử trên tài liệu thật, điền bảng kết quả vào README
-- [ ] Deploy demo lên Hugging Face Spaces (đổi `GENERATION_BACKEND=groq` trong `.env` trước khi deploy)
-
-> Toàn bộ code đã triển khai đầy đủ và kiểm tra cú pháp/logic thuần Python (parser,
-> chunker, RRF). Các phần cần model thật (embedding, Ollama, reranker) chưa được chạy
-> thử trong môi trường phát triển này — hãy `pip install -r requirements.txt`, cài
-> Ollama, rồi chạy `python scripts/build_index.py` trên máy bạn để kiểm tra end-to-end.
 
 ## Tech stack
 
