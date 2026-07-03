@@ -1,0 +1,30 @@
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Data & vector store (nặng, không commit — dùng script để tái tạo)
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Model cache
+.cache/
+*.bin
+*.safetensors
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+
+# Eval results lớn (giữ file summary, bỏ raw logs nếu quá to)
+eval_results/*.log
+
+# OS
+.DS_Store
+Thumbs.db
