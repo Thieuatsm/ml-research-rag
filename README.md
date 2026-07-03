@@ -1,3 +1,13 @@
+---
+title: ML Research Assistant RAG
+emoji: 📚
+colorFrom: blue
+colorTo: purple
+sdk: gradio
+sdk_version: 4.42.0
+app_file: app.py
+pinned: false
+---
 # ML Research Assistant (RAG)
 
 Hệ thống RAG (Retrieval-Augmented Generation) cho Q&A trên tài liệu kỹ thuật ML/AI
